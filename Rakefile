@@ -2,6 +2,7 @@
 
 require "bundler/gem_tasks"
 require "rake/testtask"
+require "rb_sys/extensiontask"
 
 Rake::TestTask.new(:test) do |t|
   t.libs << "test"
@@ -15,7 +16,9 @@ require "rake/extensiontask"
 
 task build: :compile
 
-Rake::ExtensionTask.new("biscuit") do |ext|
+GEMSPEC = Gem::Specification.load("biscuit.gemspec") || abort("Could not load biscuit.gemspec")
+
+RbSys::ExtensionTask.new("biscuit", GEMSPEC) do |ext|
   ext.lib_dir = "lib/biscuit"
 end
 
