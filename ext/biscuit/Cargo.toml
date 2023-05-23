@@ -11,4 +11,5 @@ crate-type = ["cdylib"]
 [dependencies]
 magnus = { version = "0.4" }
 
-biscuit = "0.6.0"
+biscuit-auth = "3.1"
+
